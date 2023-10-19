@@ -88,11 +88,17 @@ pickYourPokemon();
 
 
 
-
-
+setTimeout(alertPlayer(), 5000)
 
 produce()
+
 })
+
+
+function alertPlayer() {
+    alert("Welcome to PokeMedia! 1. Add your friends 2. Begin browsing posts! You can see the global collection of posts, or opt to view your friends' posts!")
+
+}
 // function startTime() {
 //     console.log("Start time")
 //     produce()
