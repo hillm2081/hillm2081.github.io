@@ -1,0 +1,7 @@
+.stat {
+    display: flex;
+    /* justify-content:end; */
+    flex-direction: row;
+    /* width: 100px; */
+    background-color:rgb(241, 240, 220)
+}
