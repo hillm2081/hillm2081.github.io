@@ -1,14 +1,16 @@
 :root {
     --sideBorderWidth: 25%;
+    --brandBlue: rgb(59, 56, 186);
     /* --pokemonSearch: "visible"; */
-
 }
 
 
 html {
+    transition: all 2s;
     font-family: 'Noto Serif Vithkuqi', serif;
     font-family: 'Nunito', sans-serif;
-    background-color: rgb(110, 110, 110);
+    background-color: var(--brandBlue);
+    overflow-y: hidden;
 }
 .stat {
 /* background-color:rgb(160, 221, 221); */
@@ -24,6 +26,23 @@ outline-style:solid;
     padding:10px;
     margin:none;
 }
+
+.friendListTitle {
+    font-size:2vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.iconFriend{
+    filter: brightness(.55);
+    width:5vw;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    margin-left: auto;
+    /* margin-right: auto; */
+}
 #backgroundImage {
     width:100%;
     height: 100%;
@@ -37,9 +56,32 @@ outline-style:solid;
     margin:0;
 
 }
+.flex {
+    display:flex;
+    flex-direction: row;
+}
 #heartIcon {
     font-size: 300%;
     /* margin: 100px; */
+}
+.displayFriends {
+    padding-left: 10px;
+    padding-right: 10px ;
+    text-align: left;
+    margin-left: 10px;
+    width:fit-content;
+    height:fit-content;
+    border-radius: 15px;
+    background-color:var(--brandBlue);
+    filter: brightness(1.75);
+    position:absolute;
+    left:10;
+    top:22vw;
+    color:white;
+}
+.heart {
+    filter: drop-shadow(5px,5px,5px,rgb(255,0,0,0.4));
+
 }
 .border {
     background-color:black;
@@ -66,22 +108,25 @@ height: 100%;
     height: calc(var(--sideBorderWidth)/2); 
 }
 .group {
-    outline-color: black;
-    outline-style:solid;
+    /* outline-color: black;
+    outline-style:solid; */
 }
 .smalltitle {
     padding: 0;
     margin:0;
+    background-color: var(--brandBlue);
+    filter: brightness(1.75);
     display:flex;
     flex-direction: row;
     justify-content: center;
+    color:white;
 
 }
 
 .globalFeed {
     visibility: hidden;
 
-    background-color:rgb(211, 211, 211);
+    background-color:rgb(48, 58, 99);
     width: 100%;
     height: 100%;
     position:absolute;
@@ -92,13 +137,26 @@ height: 100%;
 .localFeed {
     visibility: hidden;
 
-    background-color:rgb(211, 211, 211);
+    background-color:rgb(48, 58, 99);
     width: 100%;
     height: 100%;
     position:absolute;
     top:0;
     z-index: 0;
 
+}
+#references {
+    line-height: 40px;
+}
+#search {
+    width:50%;
+    height:50%;
+    /* margin:10px; */
+    /* background-color: var(--brandBlue); */
+    /* filter: brightness(4); */
+    margin-bottom: 10px;
+    background-color:rgb(255, 255, 255);
+    color:rgb(203, 200, 200);
 }
 
 #rightRect {
@@ -108,8 +166,15 @@ height: 100%;
     height: 100%;
       
 }
+.nav {
+    width: 25%;
+    height: 75%;
+    font-size: auto;
+}
 #pokemonSearch-Name {
     visibility: visible;
+    outline-color: none;
+    outline-style:none;
 }
 #pokemonSearch-Information {
     visibility: visible;
@@ -125,7 +190,7 @@ height: 100%;
 .foot {
     position: absolute;
     bottom:0;
-    background-color:rgb(255, 255, 255, 0.5);
+    background-color:var(--brandBlue);
     height: 5%;
     width:100%;
     display: flex;
@@ -141,7 +206,8 @@ height: 100%;
     width: 300px;
     height: 100px;
     border-radius: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+    background-color:var(--brandBlue)
     
 }
 
@@ -152,15 +218,75 @@ height: 100%;
     margin-right: auto;
 }
 #pokemonImg {
-    width: 50%;
+    width: 75%;
     left: 25%;
+    top:20px;
+}
+.title {
+    display:inline;
+    width: 100%;
+    text-align: center;
+    font-size: 500%;
+    margin:none;
+    padding-bottom: none;
+    font-weight: bolder;
+    color:white;
+    z-index: 100;
+
+}
+#pokeMedia {
+    margin-bottom: none;
+}
+.titleDescription {
+    color: var(--brandBlue);
+    filter: brightness(2.5);
+    font-weight: bold;
+    font-size: 125%;
+    margin-bottom: 25px;
+    line-height: 100%;
+}
+button {
+    width: 50%;
+    border-radius: 25px;
+    height: 100px;
+    background-color:var(--brandBlue);
+    /* filter:drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3)); */
+    filter: brightness(1.75);
+    color:white;
+    font-size: 150%;
+    margin-left:auto;
+    margin-right: auto;
+
+}
+#grabSearch{
+    font-size: 100%;
+    height: 75%;
+    /* width:50%;
+    height:100%; */
+}
+button:hover {
+    filter: brightness(1.75);
+    outline: auto;
+}
+.intro {
+    line-height: 1px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#sub {
+    font-size: 200%;
+    margin-top: none;
 }
 .pokemonImg {
-    width: 25%;
+    width: 50%;
     z-index: 100;
-    left: calc(-20px + 40%);
-    /* top: 10%; */
+    left: calc(24%);
     position:absolute;
+    filter: drop-shadow(4px 3px 3px rgb(0,0,0,.3));    /* margin-top:75px; */
+        /* top: 200px; */
+
         /* top:150px; */
     /* left: -100px; */
 }
@@ -188,40 +314,59 @@ height: 100%;
         height: 500px; */
     /* outline-color: black;
     outline-style:solid; */
+    /* position: fixed; */
+
     border-radius: 15px;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    height:fit-content;
     /* margin-top: 15px; */
 }
 .pokemonUpper {
     /* padding: 15px; */
     display: flex;
     flex-direction: column;
-    background-color: rgb(255,255,255,0.5);
+
     width: 100%;
     border-radius: 15px;
     z-index: 10;
 }
-.track {
-    top: 0;
-    background-color:grey;
-    max-width: 75%;
-    max-height: 100vh;
-    z-index: 5;
-    position: absolute;
-    left:12.5%;
+.trackEdit {
     display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.track {
+    display: flex;
+    overflow-y:auto;
+    width: 75%;
+    height:100%;
     flex-direction: column; 
-    overflow-y:scroll;
-    justify-content: center;
+    background-color:var(--brandBlue);
+    position: absolute;
+    top: 100;
+    z-index: -9;
+    left:12.5%;
     align-items: center;
+    /* 
+    justify-content: center;IS THIS MESSING EVERYTHING UP?
+     */
+
 }
 #testDivLocal {
     width: 100%;
 }
+.intro {
+    width: 100%;
+    height: 100%;
+    background-color:rgb(59, 56, 186);
+}
 .testDiv {
 
-    width: 25%;
+    width: 50%; 
     padding:34px;
     /* background-color: red; */
     border-radius: 5px;
@@ -234,7 +379,7 @@ height: 100%;
     outline-style:solid;
 }
 .name-value {
-    font-size:2vw;
+    font-size:6vw;
     font-weight:bolder;
     margin:0;
     padding-bottom:10;
@@ -334,6 +479,7 @@ height: 100%;
     justify-content:center;
     margin:0;
     padding:0;
+    gap:10px;
 }
 .item {
     display:flex;
@@ -351,6 +497,7 @@ height: 100%;
     margin-left: 25px;
     margin-right: 25px;
     font-size: larger;
+    margin-bottom: none;
 }
 /* .track {
     width: 100%;
@@ -388,6 +535,7 @@ height: 100%;
     overflow: auto;
     width:100%;
     background-color:rgb(237, 237, 237);
+    text-align: center;
     /* font-size: 150%; */
 }
 .like-bar {

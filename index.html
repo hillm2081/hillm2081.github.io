@@ -16,10 +16,9 @@
     <div class="border" id="topRect"></div>
     <div class="border" id="bottomRect"></div>
 
-<!-- Maybe talk about how we are all on a million social media platforms and our presence is always being commanded -->
     
 
-    
+    <div class="intro" id="intro"><h1 class="title"id="pokeMedia">PokéMedia</h1><p  class="title" id="sub">Powerful Posts!</p><p class="titleDescription">Subscribe to your Pokémon friends, <br>and view the worlds' posts together!</p><button id="buttonIntro">Find My Pokémon Friends!</button> <p id="references">PokeAPI: https://pokeapi.co/ <br> PHP Noise: https://php-noise.com/ <br> Random Word API: https://random-word-api.herokuapp.com <br> <b style="color: white;">Developed by Mason Hill</b> </p></div>
 
 
     <div class="pokemonWindow" id="pokeWindow">
@@ -36,13 +35,13 @@
         <!-- ############################################################################################### -->
         <div class="pokemonUpper">
             <div class="group smalltitle" id="globalFeed-Title">
-                <div><p>Global Total posts:</p><p id="total-posts">0</p></div><p id="title">Global Feed</p><div><p>Global Total likes:</p><p id="total-likes">0</p></div>
+                <div><p>Global Total posts:</p><p id="total-posts">0</p></div><p id="title">World Feed</p><div><p>World Total likes:</p><p id="total-likes">0</p></div>
                 <div class="statSection"></div>
             </div>
             
             <div class="group" id="pokemonSearch-Name">
                 <div class="namePlaceholder"><p class="name-value" id="name.value">"null"</p></div>
-                <div class="levelPlaceholder"><p class="level-subheader">lvl.</p><p class="level-value"id="level.value">1</p></div>
+            
             </div>
         </div>
         <!-- ############################################################################################### -->
@@ -50,26 +49,20 @@
             <div class="track" id="track">
 
 
-
-                <!-- <div class="testDiv" id="testDiv">
-                    <div class="like-bar"id="feed-likes"><span class="material-symbols-rounded" id="heartIcon">favorite</span><div id="feed-like-count">one like</div><div> likes</div></div>
-                    <div class="imageCanvas">
-                        <img class="pokemonImgBackground" id="pokemonImgBackground">
-                        <img id="pokemonImg" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png">
-                    </div>
-                    <div class="statSection row" id="feed-nameLocation">
-                        <div class="statSquare onethird" id="feed-name-value">name</div>
-                        <div id="feed-location-value" class="statSquare twoThird">location</div>
-                    </div>
-                    <div id="miniStats">
-                        
-                        <div class="statSquare description" id="feed-description"></div>
-                    </div>
-                </div> -->
-
                 
             </div>
         </div>
+
+        <div class="displayFriends" style="text-align: center;" id="friendList"> 
+            <p class>Friend List</p>
+                <div class="flex"><p class="friendListTitle"id="friendName1">Friend1</p><img  class="iconFriend"id="friendIcon1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"></div>
+                <div class="flex"><p  class="friendListTitle"id="friendName2">Friend2</p><img  class="iconFriend"id="friendIcon2"src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"></div>
+                <div class="flex"><p  class="friendListTitle"id="friendName3">Friend3</p><img  class="iconFriend"id="friendIcon3"src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"></div>
+
+        </div>
+
+
+
         <div class="localFeed" id="localFeed"> 
             <div class="track" id="trackLocal">
 
@@ -86,7 +79,7 @@
                 <div class='statBorder'><p>Statistics</p></div>
                 <div class="statSection">
                     <div class="statSquare">Type<div  class="statValue "id="type.value" style=></div></div>
-                    <div class="statSquare">Type<div  class="statValue "id="typeTwo.value" style=></div></div>
+                    <div class="statSquare"id="typeTwoSquare">Type<div  class="statValue "id="typeTwo.value" style=></div></div>
                     <div class="statSquare">HP <p  class="statValue "id="hp.value" style=></p></div>
                     <div class="statSquare">Attack <p class="statValue " id="attack.value"></p></div>
                     <div class="statSquare">Defense <p  class="statValue "id="defense.value"></p></div>
@@ -104,29 +97,20 @@
         <button id="selectPokemon">This Is My Friend</button>
 
         <div class="group" id="pokemonSearch-Search">
-            <input type="search" id="search">
-            <button id="grabSearch" style="width: 100px;">Look for Friend</button>
-            <!-- <button id="next">next</button> -->
+            <input placeholder="Type Pokémon's name here"type="search" id="search">
+            <button id="grabSearch">Search for Friend</button>
         </div>
         <!-- ############################################################################################### -->.
 
 
-        <div class="foot" id="footer"><div class="button" id="local">Show What Friends Are Doing</div></div>
+        <div class="foot" id="footer"><button id="local">See Friends' Posts</button></div>
 
 </div>
 
 
 
 
-<!-- <div>
-    <div class="stat">
 
-        <p>Level :</p>
-        <p id="level" style="margin-right: 50px;"></p>
-        <button id="levelButtonDecrease">levelButtonDecrease</button>
-        <button id="levelButtonIncrease">levelButtonIncrease</button>
-    </div>
-</div> -->
 
 
     
@@ -138,28 +122,3 @@
 </html>
 
 
-<!-- 
-//API takes location, and makes spot on map. Each spot has new content depending on the coordinates?
-
-//API randomly generates character.
-
-//API generates character depending on something specific. Character gets uploaded to database, and can be viewed by everyone?
-
-
-//Take location, send as character? 
-
-
-//Take a photo, and it generates something random based on file attribute?
-
-//Fake ecommerce website?
-
-//Fake products?
-
-//Cycle music being played in a given discord server. Collect all users, and then display all songs being played
-
-
-
-//pokemon? pokemon on some site..? idk
-
-
-Virtual character fighter (put two characters against eachother, use pokemon API and other?) -->

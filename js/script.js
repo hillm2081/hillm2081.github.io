@@ -22,6 +22,7 @@ var localEnabled = 0;
 var oneTime = 0;
 var myPokemon = [];
 var totalPokemon = []
+document.getElementById('friendList').style.visibility = "hidden"
 
 
 
@@ -88,17 +89,11 @@ pickYourPokemon();
 
 
 
-setTimeout(alertPlayer(), 5000)
+
+
 
 produce()
-
 })
-
-
-function alertPlayer() {
-    alert("Welcome to PokeMedia! 1. Add your friends 2. Begin browsing posts! You can see the global collection of posts, or opt to view your friends' posts!")
-
-}
 // function startTime() {
 //     console.log("Start time")
 //     produce()
@@ -145,28 +140,39 @@ function produce() {
 // globalButton.addEventListener('click', () => {
  
 // })
+
+const intro = document.getElementById('buttonIntro')
+intro.addEventListener('click', () => {
+    document.getElementById('intro').style.display = "none"
+    document.getElementById('friendList').style.visibility = "visible"
+
+})
+
+
 const local = document.getElementById('local')
 local.addEventListener('click', () => {
     if (localEnabled == 0) {
         localEnabled = 1;
         element = document.getElementById('local')
-        element.innerHTML = "Show What Anyone Is Doing <br> Global Feed"
+        element.innerHTML = "See World Posts"
 
-        element = document.getElementById('title').innerHTML = "Local Feed"
+        element = document.getElementById('title').innerHTML = "Friend Feed"
 
         document.getElementById('globalFeed').style.visibility = "hidden"
         document.getElementById('localFeed').style.visibility = "visible"
+        // document.getElementById('friendList').style.visibility = "visible"
 
     } else {
         localEnabled = 0;
         element = document.getElementById('local')
         // element.style.visibility = "visible"
         // element.style.visibility = "hidden"
-        element.innerHTML = "Show What Friends Are Doing <br> Local Feed"
+        element.innerHTML = "See Friends' Posts"
         element = document.getElementById('title').innerHTML = "Global Feed"
         console.log(localEnabled)
         document.getElementById('globalFeed').style.visibility = "visible"
         document.getElementById('localFeed').style.visibility = "hidden"
+        // document.getElementById('friendList').style.visibility = "hidden"
 
 
 
@@ -195,12 +201,37 @@ local.addEventListener('click', () => {
 const selectPokemon = document.getElementById('selectPokemon')
 selectPokemon.addEventListener('click', () => {
     document.getElementById('selectPokemon').innerHTML = "Friend Chosen!<br> Search for another!"
-    myPokemon.push(pokemonOne)
+    produce();
+
+
+
+
+
+
+
+
+
+    if (myPokemon.length < 3 ) {
+        myPokemon.push(pokemonOne)
+        var element = document.getElementById('friendName'+myPokemon.length)
+        console.log(myPokemon[myPokemon.length - 1].name)
+        console.log(myPokemon[myPokemon.length - 1])
+    //friendName1
+        element.innerHTML = myPokemon[myPokemon.length-1].name.toUpperCase()
+        var element = document.getElementById('friendIcon'+myPokemon.length)
+        element.src=myPokemon[myPokemon.length - 1].sprites.front_default
+    }
+    
+
+    // var element = document.getElementById('friendIcon'+myPokemon.length)
+    // element.src = myPokemon[myPokemon.length - 1].sprites.front_default
+
     console.log(myPokemon)
     if (myPokemon.length == 3) {
-        document.getElementById('selectPokemon').innerHTML = "Begin Loading Social Media"
+        document.getElementById('selectPokemon').innerHTML = "Click to Begin Loading Social Media"
     }
-    if (myPokemon.length > 3) {
+    if (myPokemon.length > 2) {
+
         document.getElementById('selectPokemon').style.visibility = "hidden"
         document.getElementById('pokemonSearch-Search').style.visibility = "hidden"
         document.getElementById('pokemonSearch-Name').style.visibility = "hidden"
@@ -216,11 +247,12 @@ selectPokemon.addEventListener('click', () => {
         }, 1000);
 
 
-
+        // produce()
 
 
     }
     // putIntoLocal();
+    console.log(myPokemon.length)
 
 })
 
@@ -250,32 +282,9 @@ selectPokemon.addEventListener('click', () => {
 // }
 
 
-// //#####INCREASE BY ONE
-// const incrementLevel = document.getElementById('levelButtonIncrease')
-// incrementLevel.addEventListener('click', () => {
-//     if (currentLevel == 100) {
-//         console.log("Level 100")
-//     } else {
-//         currentLevel++;
-//         console.log(currentLevel)
-
-//     }
-//     updateLevelHTML(currentLevel); 
-
-// })
 
 
-// // #####DECREASE BY ONE
-// const decrementLevel = document.getElementById('levelButtonDecrease')
-// decrementLevel.addEventListener('click', () => {
-//     if (currentLevel == 1) {
-//         console.log("Level 1")
-//     } else {
-//         currentLevel--;
-//         console.log(currentLevel)
-//     }
-//     updateLevelHTML(currentLevel); 
-// })
+
 
 //##### UPDATE LEVEL
 function updateLevelHTML(currentLevel) {
@@ -292,25 +301,25 @@ function makeBackground(query) {
 
 
 function randomPokemon() {
-    var random = Math.round(Math.random()*1000);
+    var random = Math.round(Math.random()*50);
     console.log(random);
     grab(random);
 }
 function feedNewPokemon() {
 
-    var post = '<div class="testDiv" id="testDiv' +postAmount+ '"><div class="like-bar"id="feed-likes' +postAmount+ '"><span class="material-symbols-rounded" id="heartIcon' +postAmount+ '">favorite</span><div id="feed-like-count' +postAmount+ '">one like</div><div> likes</div></div><div class="imageCanvas"><img class="pokemonImgBackground" id="pokemonImgBackground' +postAmount+ '"><img class="pokemonImg"id="pokemonImg' +postAmount+ '" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png"></div><div class="statSection row" id="feed-nameLocation' +postAmount+ '"><div><p class="subtext">Posted by</p><div class="statSquare noOutline" id="feed-name-value' +postAmount+ '">name</div></div><div><p class="subtext">Photo taken at</p><div id="feed-location-value' +postAmount+ '" class="statSquare noOutline ">location</div></div></div><div id="miniStats' +postAmount+ '"><div class="statSquare description noOutline" id="feed-description' +postAmount+ '"></div></div></div>'
+    var post = '<div class="testDiv" id="testDiv' +postAmount+ '"><div class="like-bar"id="feed-likes' +postAmount+ '"><span class="material-symbols-rounded" class="heart" id="heartIcon' +postAmount+ '">favorite</span><div id="feed-like-count' +postAmount+ '">one like</div><div> likes</div></div><div class="imageCanvas"><img class="pokemonImgBackground" id="pokemonImgBackground' +postAmount+ '"><img class="pokemonImg"id="pokemonImg' +postAmount+ '" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png"></div><div class="statSection row" id="feed-nameLocation' +postAmount+ '"><div><p class="subtext">Posted by</p><div class="statSquare noOutline" id="feed-name-value' +postAmount+ '">name</div></div><div><p class="subtext">Photo taken at</p><div id="feed-location-value' +postAmount+ '" class="statSquare noOutline ">location</div></div></div><div id="miniStats' +postAmount+ '"><div class="statSquare description noOutline" id="feed-description' +postAmount+ '"></div></div></div>'
 
 
 
 
     
     var x = Math.round(Math.random(20));
-    console.log(locations.results[x].name);
-    console.log(sentence)
-    console.log(pokemonOne)
+    // console.log(locations.results[x].name);
+    // console.log(sentence)
+    // console.log(pokemonOne)
     var randomLikes = Math.round(Math.random(1)*postAmount)
     totalLikes = totalLikes + randomLikes;
-    console.log(duration + " current like multiplier," + randomLikes + " likes generated.");
+    // console.log(duration + " current like multiplier," + randomLikes + " likes generated.");
     document.getElementById('track').innerHTML= document.getElementById('track').innerHTML + post;
     document.getElementById('pokemonImg'+postAmount).src =  pokemonOne.sprites.front_default
     document.getElementById('feed-name-value'+postAmount).innerHTML=pokemonOne.name.toUpperCase();
@@ -321,7 +330,7 @@ function feedNewPokemon() {
     var query = "?r=${r}&g=${g}&b=${b}&tiles=${tiles}&tileSize=${tileSize}&borderWidth=${borderWidth}&mode=${mode}&json"
     link = baseurl + query
 
-    console.log(link)
+    // console.log(link)
     var xhr = new XMLHttpRequest();
     xhr.open('GET', link, true);
     xhr.send(null)
@@ -329,12 +338,12 @@ function feedNewPokemon() {
 
         if (xhr.status == 200) {
             backgroundImage = JSON.parse(xhr.responseText)
-            console.log(backgroundImage.uri)
+            // console.log(backgroundImage.uri)
             // var element =  document.getElementById('backgroundImage'+postAmount);
             // element.src= backgroundImage.uri;
-            console.log(postAmount)
+            // console.log(postAmount)
             var element =  document.getElementById('pokemonImgBackground'+postAmount);
-            console.log(element)
+            // console.log(element)
 
             // var element =  document.getElementById('imgContainer');
             // var element =  document.getElementById('imgContainer');
@@ -349,19 +358,19 @@ function feedNewPokemon() {
 
     }
 
-    console.log(pokemonOne.id)
-    console.log(myPokemon[0].id)
+
     // if (oneTime == 0) {
     //     putIntoLocal();
     //     oneTime = 1;
     //     console.log("One Time Activated")
     // }
     for (x = 0; x <= myPokemon.length; x++) {
-
-        if (pokemonOne == myPokemon[x]) {
+        console.log(pokemonOne.id + "." + myPokemon[x].id)
+        if (pokemonOne.id == myPokemon[x].id) {
             console.log("MATCH");
             putIntoLocal();
-        }
+            return
+        } 
     }
 
 
@@ -376,16 +385,16 @@ function feedNewPokemon() {
 }
 
 function putIntoLocal() {
-    
-    var post = '<div class="testDiv" id="testDivLocal' +postAmount+ '"><div class="like-bar"id="feed-likes' +postAmount+ '"><span class="material-symbols-rounded" id="heartIcon' +postAmount+ '">favorite</span><div id="feed-like-count' +postAmount+ '">one like</div><div> likes</div></div><div class="imageCanvas"><img class="pokemonImgBackground" id="pokemonImgBackgroundLocal' +postAmount+ '"><img class="pokemonImg"id="pokemonImgLocal' +postAmount+ '" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png"></div><div class="statSection row" id="feed-nameLocationLocal' +postAmount+ '"><div><p class="subtext">Posted by</p><div class="statSquare noOutline" id="feed-name-valueLocal' +postAmount+ '">name</div></div><div><p class="subtext">Photo taken at</p><div id="feed-location-valueLocal' +postAmount+ '" class="statSquare noOutline ">location</div></div></div><div id="miniStats' +postAmount+ '"><div class="statSquare description noOutline" id="feed-description' +postAmount+ '"></div></div></div>'
+    console.log("Putting into local." + postAmount)
+    var post = '<div class="testDiv" id="testDivLocal' +postAmount+ '"><div class="like-bar"id="feed-likes' +postAmount+ '"><span class="material-symbols-rounded" class="heart"id="heartIcon' +postAmount+ '">favorite</span><div id="feed-like-countLocal' +postAmount+ '">one like</div><div> likes</div></div><div class="imageCanvas"><img class="pokemonImgBackground" id="pokemonImgBackgroundLocal' +postAmount+ '"><img class="pokemonImg"id="pokemonImgLocal' +postAmount+ '" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/551.png"></div><div class="statSection row" id="feed-nameLocationLocal' +postAmount+ '"><div><p class="subtext">Posted by</p><div class="statSquare noOutline" id="feed-name-valueLocal' +postAmount+ '">name</div></div><div><p class="subtext">Photo taken at</p><div id="feed-location-valueLocal' +postAmount+ '" class="statSquare noOutline ">location</div></div></div><div id="miniStats' +postAmount+ '"><div class="statSquare description noOutline" id="feed-descriptionLocal' +postAmount+ '"></div></div></div>'
 
     var x = Math.round(Math.random(20));
-    console.log(locations.results[x].name);
-    console.log(sentence)
-    console.log(pokemonOne)
+    // console.log(locations.results[x].name);
+    // console.log(sentence)
+    // console.log(pokemonOne)
     var randomLikes = Math.round(Math.random(1)*postAmount)
     totalLikes = totalLikes + randomLikes;
-    console.log(duration + " current like multiplier," + randomLikes + " likes generated.");
+    // console.log(duration + " current like multiplier," + randomLikes + " likes generated.");
     document.getElementById('trackLocal').innerHTML= document.getElementById('trackLocal').innerHTML + post;
     document.getElementById('pokemonImgLocal'+postAmount).src =  pokemonOne.sprites.front_default
     document.getElementById('feed-name-valueLocal'+postAmount).innerHTML=pokemonOne.name.toUpperCase();
@@ -396,33 +405,21 @@ function putIntoLocal() {
     var query = "?r=${r}&g=${g}&b=${b}&tiles=${tiles}&tileSize=${tileSize}&borderWidth=${borderWidth}&mode=${mode}&json"
     link = baseurl + query
 
-    console.log(link)
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', link, true);
-    xhr.send(null)
-    xhr.onload = function() {
 
-        if (xhr.status == 200) {
-            backgroundImage = JSON.parse(xhr.responseText)
-            console.log(backgroundImage.uri)
+            // console.log(backgroundImage.uri)
             // var element =  document.getElementById('backgroundImage'+postAmount);
             // element.src= backgroundImage.uri;
-            console.log(postAmount)
+            // console.log(postAmount)
             var element =  document.getElementById('pokemonImgBackgroundLocal'+postAmount);
-            console.log(element)
+            // console.log(element)
 
-            // var element =  document.getElementById('imgContainer');
-            // var element =  document.getElementById('imgContainer');
-
+            console.log(backgroundImage)
             element.src= backgroundImage.uri;
 
             element.src= backgroundImage.uri;
+
             postAmount = postAmount + 1;
 
-
-        }
-
-    }
 
 
 
@@ -434,15 +431,13 @@ function putIntoLocal() {
 
 
 
-//Make this a game about upgrading your pokemon team? Seeing a better pokemon and making the switch????? Possibly just show an ever-increasing line of pokemon?
-//Make this something related to social media. Maybe "PokeMedia"? Use database to randomly generate posts.
-//Maybe make a finctional app/functionality, where you can enable/discable local things. Things happening near you, or things that are importnat to you. Number of notifications are DRASTICALLY different.
-//Could use a News API to deliver notifications
-
-
-
 function grab(query) {
     var baseurl = "https://pokeapi.co/api/v2/pokemon/"
+
+
+    // query = "pikachu"
+    //Set query here to bring a specific pokemon up every time. For testing purposes.
+
     link = baseurl + query
     var xhr = new XMLHttpRequest();
     xhr.open('GET', link, true);
@@ -451,7 +446,6 @@ function grab(query) {
 
         if (xhr.status == 200) {
 
-            // console.log(xhr.responseText.name)
             pokemonOne = JSON.parse(xhr.responseText)
 
             getCaption();
@@ -495,7 +489,13 @@ function grab(query) {
             element.style.background = "linear-gradient(180deg, " + typeColors[typeOne]+ " 0%, " + typeColors[typeTwo]+ " 100%)";
 
 
+
+            // element = document.getElementById("typeTwoSquare")
+            // element.style.display = "inline";
+
             } else {
+
+
                 var element = document.getElementById("typeTwo.value")
                 element.innerHTML= "";
                 // element.style.backgroundColor= typeColors[type];
@@ -504,6 +504,9 @@ function grab(query) {
     
                 element = document.getElementById("pokeWindow")
                 element.style.background = "none";
+
+
+
             }
             element.style.backgroundColor= typeColors[typeOne];
             console.log(pokemonOne.types)
@@ -533,6 +536,7 @@ function grab(query) {
 
             }
             }
+            finish();
     }
     
     
@@ -544,7 +548,7 @@ function finish() {
 
 console.log(totalPokemon)
 
-    totalPokemon.push[totalPokemon[0]];
+    // totalPokemon.push[totalPokemon[0]];
 
     console.log("Finished")
     console.log(postAmount + " total")
