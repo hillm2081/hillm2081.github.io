@@ -306,7 +306,7 @@ function makeBackground(query) {
 
 
 function randomPokemon() {
-    var random = Math.round(Math.random()*50);
+    var random = Math.round(Math.random()*1000);
     console.log(random);
     grab(random);
 }
