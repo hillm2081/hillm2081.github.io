@@ -23,6 +23,7 @@ var oneTime = 0;
 var myPokemon = [];
 var totalPokemon = []
 document.getElementById('friendList').style.visibility = "hidden"
+document.getElementById('globalFeed-Title').style.display = "none"
 
 
 
@@ -109,6 +110,7 @@ function pickYourPokemon() {
 
 
 function produce() {
+    
     console.log("Making post")
     var locationBaseUrl = "https://pokeapi.co/api/v2/location/"
     var queryThree = '?offset=20&limit=20'
@@ -145,6 +147,7 @@ const intro = document.getElementById('buttonIntro')
 intro.addEventListener('click', () => {
     document.getElementById('intro').style.display = "none"
     document.getElementById('friendList').style.visibility = "visible"
+    document.getElementById('pokeWindow').style.visibility = "visible"
 
 })
 
@@ -231,6 +234,8 @@ selectPokemon.addEventListener('click', () => {
         document.getElementById('selectPokemon').innerHTML = "Click to Begin Loading Social Media"
     }
     if (myPokemon.length > 2) {
+console.log("hiding some things")
+document.getElementById('globalFeed-Title').style.display = "flex"
 
         document.getElementById('selectPokemon').style.visibility = "hidden"
         document.getElementById('pokemonSearch-Search').style.visibility = "hidden"
@@ -239,7 +244,7 @@ selectPokemon.addEventListener('click', () => {
         document.getElementById('pokemonSearch-Search').style.visibility = "hidden"
         document.getElementById('globalFeed').style.visibility = "visible"
         document.getElementById('footer').style.visibility = "visible"
-        document.getElementById('globalFeed-Title').style.display = "flex"
+        
         element = document.getElementById('localFeed')
         element.style.visibility = "hidden"
         setInterval(function() {
